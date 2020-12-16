@@ -40,15 +40,15 @@ https://docs.google.com/spreadsheets/d/1Ek0QMXgEH73pQNfZTnAHggwNIvll0N9HoeywLDI-
 L’objectif est de créer un site web proposant aux utilisateurs un quiz avec des questions plutôt simples mais chaque réponse sera entourée d’un principe de mini qui rendra celle-ci plus compliquée. L’utilisateur pourra s’inscrire et se connecter pour enregistrer ses scores dans un leaderboard. Nous proposons en premier lieu un seul quiz mais pourquoi pas par la suite ajouter plusieurs quizz qui se retrouvent dans l’espace de l’utilisateur qui pourra voir ceux qu’il a déjà réalisé ainsi que les nouveaux.
 
 Fonctionnalités : 
-Login sécurisé
-Conception d’un quiz (20 questions / Mini jeu)
-Récupération des scores dans une base de donnée
-Multijoueur 
+* Login sécurisé
+* Conception d’un quiz (20 questions / Mini jeu)
+* Récupération des scores dans une base de donnée
+* Multijoueur 
 
 Scénario d’interaction : 
-L’utilisateur arrive sur le site qui lui propose de se créer un compte pour pouvoir lancer le premier quiz. 
-L’utilisateur répond aux 20 questions du quiz
-Fin du quiz.
-Affichage du résultat 
-Retour au compte de l’utilisateur ou le quiz est marqué comme terminé et le score est affiché.
-Possibilité de rejouer le quiz ou d’en choisir un autre 
+* L’utilisateur arrive sur le site qui lui propose de se créer un compte pour pouvoir lancer le premier quiz. 
+* L’utilisateur répond aux 20 questions du quiz
+* Fin du quiz.
+* Affichage du résultat 
+* Retour au compte de l’utilisateur ou le quiz est marqué comme terminé et le score est affiché.
+* Possibilité de rejouer le quiz ou d’en choisir un autre 
