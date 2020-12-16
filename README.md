@@ -15,18 +15,18 @@ La partie Quizz, qui permettra de répondre aux questions afin de découvrir le 
 La partie compte, celle-ci contient les scores du joueur, ses statistiques, et un accès au leaderboard afin de se comparer avec les autres joueurs. 
 Afin de pouvoir participer au Quizz il est nécessaire de s’inscrire sur le site. Nous utiliserons PostgreSQL pour la partie base de données.
 Le modèle de base de donnée pour l’inscription sera de la forme : 
-  -id du joueur
-  -pseudo
-  -mot de passe
+* id du joueur
+* pseudo
+* mot de passe
   
 La base donnée comprendra aussi une table pour enregistrer les scores des joueurs qui sera de la forme :
-  -id de la partie
-  -temps effectué
-  -score
+* id de la partie
+* temps effectué
+* score
   
 Et nous aurons une table permettant de mettre en commun les résultats des parties en fonctions des joueurs sous la forme :
-  -id joueur
-  -id de la partie
+ * id joueur
+ * id de la partie
   
 La partie sera gérée par un Vue JS afin d’avoir un défilement des questions dynamiques et de ne pas avoir besoin de changer de pages entre chaque question.
 
