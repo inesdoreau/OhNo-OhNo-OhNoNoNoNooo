@@ -2,10 +2,10 @@
 
 ## Synthèse du projet et analyse 
 
-Dans le cadre des cours de programmation événementielle et asynchrone nous avons été amenés à découvrir et expérimenter le développement web sous un angle totalement différent de ce que nous connaissions alors. Nous avons alors appris les bases de Node et Vue JS tout en ayant des rappels des langages HTML, CSS et même SQL. Ce projet permet de faire la synthèse de toutes les connaissances que nous avons reçues au cours des derniers mois.
+Ce projet permet de faire la synthèse de toutes les connaissances que nous avons reçues au cours des derniers mois.
 Le cahier des charges du projet est simple: utiliser git pour faire un site web fonctionnel avec un système de login, qui, une fois terminé sera déployé sur le web.
 
-Nous nous sommes alors fixés comme objectif de réaliser un projet qui soit amusant et ludique, nous avons donc décidé de partir sur un site web permettant de jouer à un mini-jeu. Ce jeu prend la forme d’un quizz sur un ton léger, qui a pour objectif de tester votre connaissance générale sur de multiples domaines tout en vous faisant réaliser de petits challenges pour répondre à certaines questions.
+L'objectif est de réaliser un projet qui soit amusant et ludique, nous avons décidé de partir sur un site web permettant de jouer à un mini-jeu. Ce jeu prend la forme d’un quiz sur un ton léger, qui a pour objectif de tester votre connaissance générale sur de multiples domaines tout en vous faisant réaliser de petits challenges pour répondre à certaines questions.
 
 
 ## Synthèse du travail de conception 
