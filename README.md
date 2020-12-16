@@ -11,15 +11,15 @@ L'objectif est de réaliser un projet qui soit amusant et ludique, nous avons d�
 ## Synthèse du travail de conception 
 
 Le site web sera composé en deux partie :
-La partie Quizz, qui permettra de répondre aux questions afin de découvrir le quizz ou alors perfectionner ses résultats.
+La partie Quiz, qui permettra de répondre aux questions afin de découvrir le quiz ou alors perfectionner ses résultats.
 La partie compte, celle-ci contient les scores du joueur, ses statistiques, et un accès au leaderboard afin de se comparer avec les autres joueurs. 
-Afin de pouvoir participer au Quizz il est nécessaire de s’inscrire sur le site. Nous utiliserons PostgreSQL pour la partie base de données.
+Afin de pouvoir participer au Quiz il est nécessaire de s’inscrire sur le site. Nous utiliserons PostgreSQL pour la partie base de données.
 Le modèle de base de donnée pour l’inscription sera de la forme : 
 * id du joueur
 * pseudo
 * mot de passe
   
-La base donnée comprendra aussi une table pour enregistrer les scores des joueurs qui sera de la forme :
+La base de donnée comprendra aussi une table pour enregistrer les scores des joueurs qui sera de la forme :
 * id de la partie
 * temps effectué
 * score
@@ -28,7 +28,7 @@ Et nous aurons une table permettant de mettre en commun les résultats des parti
  * id joueur
  * id de la partie
   
-La partie sera gérée par un Vue JS afin d’avoir un défilement des questions dynamiques et de ne pas avoir besoin de changer de pages entre chaque question.
+La partie sera gérée par un Vue JS afin d’avoir un défilement des questions dynamiques et de ne pas changer de pages entre chaque question.
 
 
 ## Feuille de route 
@@ -37,7 +37,7 @@ https://docs.google.com/spreadsheets/d/1Ek0QMXgEH73pQNfZTnAHggwNIvll0N9HoeywLDI-
 
 ## Objectif du prototype initial 
 
-L’objectif est de créer un site web proposant aux utilisateurs un quiz avec des questions plutôt simples mais chaque réponse sera entourée d’un principe de mini qui rendra celle-ci plus compliquée. L’utilisateur pourra s’inscrire et se connecter pour enregistrer ses scores dans un leaderboard. Nous proposons en premier lieu un seul quiz mais pourquoi pas par la suite ajouter plusieurs quizz qui se retrouvent dans l’espace de l’utilisateur qui pourra voir ceux qu’il a déjà réalisé ainsi que les nouveaux.
+L’objectif est de créer un site web proposant aux utilisateurs un quiz avec des questions plutôt simples, mais chaque réponse sera entourée d’un principe de mini jeu qui rendra celle-ci plus compliquée. L’utilisateur pourra s’inscrire et se connecter pour enregistrer ses scores dans un leaderboard. Nous proposons en premier lieu un seul quiz mais pourquoi pas par la suite ajouter plusieurs quiz qui se retrouvent dans l’espace de l’utilisateur qui pourra voir ceux qu’il a déjà réalisé ainsi que les nouveaux.
 
 Fonctionnalités : 
 * Login sécurisé
