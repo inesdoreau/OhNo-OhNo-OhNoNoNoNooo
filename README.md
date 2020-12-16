@@ -2,24 +2,34 @@
 
 ## Synthèse du projet et analyse 
 
-TO WRITE...
+Dans le cadre des cours de programmation événementielle et asynchrone nous avons été amenés à découvrir et expérimenter le développement web sous un angle totalement différent de ce que nous connaissions alors. Nous avons alors appris les bases de Node et Vue JS tout en ayant des rappels des langages HTML, CSS et même SQL. Ce projet permet de faire la synthèse de toutes les connaissances que nous avons reçues au cours des derniers mois.
+Le cahier des charges du projet est simple: utiliser git pour faire un site web fonctionnel avec un système de login, qui, une fois terminé sera déployé sur le web.
+
+Nous nous sommes alors fixés comme objectif de réaliser un projet qui soit amusant et ludique, nous avons donc décidé de partir sur un site web permettant de jouer à un mini-jeu. Ce jeu prend la forme d’un quizz sur un ton léger, qui a pour objectif de tester votre connaissance générale sur de multiples domaines tout en vous faisant réaliser de petits challenges pour répondre à certaines questions.
+
 
 ## Synthèse du travail de conception 
 
 Le site web sera composé en deux partie :
 La partie Quizz, qui permettra de répondre aux questions afin de découvrir le quizz ou alors perfectionner ses résultats.
 La partie compte, celle-ci contient les scores du joueur, ses statistiques, et un accès au leaderboard afin de se comparer avec les autres joueurs. 
-
 Afin de pouvoir participer au Quizz il est nécessaire de s’inscrire sur le site. Nous utiliserons PostgreSQL pour la partie base de données.
 Le modèle de base de donnée pour l’inscription sera de la forme : 
-pseudo, 
-mot de passe, 
-confirmation de mot de passe.
-
+  -id du joueur
+  -pseudo
+  -mot de passe
+  
 La base donnée comprendra aussi une table pour enregistrer les scores des joueurs qui sera de la forme :
-pseudo du joueur,
-numéro du quiz,
-score.
+  -id de la partie
+  -temps effectué
+  -score
+  
+Et nous aurons une table permettant de mettre en commun les résultats des parties en fonctions des joueurs sous la forme :
+  -id joueur
+  -id de la partie
+  
+La partie sera gérée par un Vue JS afin d’avoir un défilement des questions dynamiques et de ne pas avoir besoin de changer de pages entre chaque question.
+
 
 ## Feuille de route 
 
