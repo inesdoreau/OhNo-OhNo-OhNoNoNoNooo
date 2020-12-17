@@ -52,3 +52,5 @@ Scénario d’interaction :
 * Affichage du résultat 
 * Retour au compte de l’utilisateur ou le quiz est marqué comme terminé et le score est affiché.
 * Possibilité de rejouer le quiz ou d’en choisir un autre 
+
+![UserStory](https://user-images.githubusercontent.com/73130585/102514981-73111d80-408d-11eb-92fc-64860af40c93.png)
