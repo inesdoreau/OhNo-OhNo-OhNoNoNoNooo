@@ -1,0 +1,32 @@
+{
+  "name": "ohno-ohno-ohnonononooo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inesdoreau/OhNo-OhNo-OhNoNoNoNooo.git"
+  },
+  "keywords": [
+    "porgrammation",
+    "asynchrone",
+    "project"
+  ],
+  "author": "ines doreau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inesdoreau/OhNo-OhNo-OhNoNoNoNooo/issues"
+  },
+  "homepage": "https://github.com/inesdoreau/OhNo-OhNo-OhNoNoNoNooo#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.5.1"
+  }
+}
