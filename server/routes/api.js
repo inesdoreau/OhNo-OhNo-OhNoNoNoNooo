@@ -2,13 +2,15 @@ const express = require('express')
 const router = express.Router()
 
 const bcrypt = require('bcrypt')
-const { Client } = require('pg')
+const { Client, Connection } = require('pg')
 
 const client = new Client({
-  user: 'kwhpxbdf',
+  /*user: 'kwhpxbdf',
   host: 'suleiman.db.elephantsql.com',
   password: 'ExLfu8pV-U4wutH840he161Wm8VGq3Py',
-  database: 'kwhpxbdf'
+  database: 'kwhpxbdf',
+  */
+  connectionString: process.env.DATABASE_URL
 })
 
 client.connect()
