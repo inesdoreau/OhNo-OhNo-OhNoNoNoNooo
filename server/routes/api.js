@@ -5,12 +5,13 @@ const bcrypt = require('bcrypt')
 const { Client, Connection } = require('pg')
 
 const client = new Client({
-  /*user: 'kwhpxbdf',
-  host: 'suleiman.db.elephantsql.com',
-  password: 'ExLfu8pV-U4wutH840he161Wm8VGq3Py',
-  database: 'kwhpxbdf',
-  */
-  connectionString: process.env.DATABASE_URL
+  
+  user: 'slwtkbrbtbvabe',
+  host: 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
+  password: '86f50c1a4be2e9d887b1e083d40432d89335705f5d2a1d9021152a9e59c9c22c',
+  database: 'd8mn9uj7ubh1e0',
+  
+  //process.env.DATABASE_URL
 })
 
 client.connect()

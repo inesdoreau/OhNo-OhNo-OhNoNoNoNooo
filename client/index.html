@@ -1,14 +1,16 @@
 <!doctype>
 <html lang="fr">
     <head>
+        <title>OhNoQuiz</title>
         <meta charset="utf-8">
-        <title>OhNo OhNo OhNoNoNoNo</title>
         <!-- Load Vue followed by Vue Router -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
     </head>
+    <!--
     <body>
         <div id="app">
           <header>
@@ -33,4 +35,28 @@
         </div>
         <script src="/vue-application.js"></script>
     </body>
+    -->
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <body>
+      <header class="site-header">
+        <center>
+          <nav>
+            <button class="login"> Log In </button>
+            
+            <img class="LogoQuiz" src="images/OhNoQuiz.png" >
+            <button class="login"> Register </button>
+          </nav>
+        </center>
+      </header>
+      <main>
+        <router-view
+          :user="user"
+          :is-connected="isConnected"
+         @login="login"
+        ></router-view>
+      </main>
+    </body>
 </html>
+
+
+
