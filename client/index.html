@@ -38,16 +38,20 @@
     -->
     <link rel="stylesheet" type="text/css" href="CSS/index.css">
     <body>
-      <header class="site-header">
+      <!--<header class="site-header">-->
         <center>
           <nav>
-            <button class="login"> Log In </button>
+            <button class="login"> Log In
+              <router-link to='/login'>Login</router-link>  
+            </button>
             
             <img class="LogoQuiz" src="images/OhNoQuiz.png" >
-            <button class="login"> Register </button>
+            <button class="login"> Register 
+              <router-link to='/register'>Register</router-link>
+            </button>
           </nav>
         </center>
-      </header>
+      <!--</header>-->
       <main>
         <router-view
           :user="user"
