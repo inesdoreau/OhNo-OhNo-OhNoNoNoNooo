@@ -3,6 +3,7 @@
     <head>
         <title>OhNoQuiz</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="CSS/index.css">
         <!-- Load Vue followed by Vue Router -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
@@ -36,19 +37,15 @@
         <script src="/vue-application.js"></script>
     </body>
     -->
-    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    
     <body>
       <!--<header class="site-header">-->
-        <center>
-            
-              <router-link class="login" to='/login'>Log in</router-link>  
-            
-            
+        
+          <center>  
+            <router-link to='/login' class="login">Log in</router-link>
             <img class="LogoQuiz" src="images/OhNoQuiz.png" >
-            
-              <router-link class="login" to='/register'>Register</router-link>
-            
-        </center>
+            <router-link to='/register' class="login">Register</router-link>
+          </center>  
       <!--</header>-->
       <main>
         <router-view
