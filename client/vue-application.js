@@ -1,11 +1,13 @@
 const Home = window.httpVueLoader('./components/Home.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
+const Account = window.httpVueLoader('./components/Account.vue')
 
 const routes = [
   { path: '/', component: Home },
   { path: '/register', component: Register },
   { path: '/login', component: Login },
+  { path: '/account', component: Account },
 ]
 
 const router = new VueRouter({
@@ -38,7 +40,7 @@ var app = new Vue({
       const res = await axios.post('/api/login', user)
       this.user = res.data
       this.isConnected = true
-      this.$router.push('/')
+      this.$router.push('/account')
     }
   }
 })

@@ -1,4 +1,4 @@
-<!doctype>
+<!DOCTYPE HTML>
 <html lang="fr">
     <head>
         <title>OhNoQuiz</title>
@@ -41,12 +41,11 @@
     <body>
       <!--<header class="site-header">-->
         <div id = "app">
-          <center>  
-            <router-link to='/login' class="login">Log in</router-link>
-            <img class="LogoQuiz" src="images/OhNoQuiz.png" >
-            <router-link to='/register' class="login">Register</router-link>
-          </center>  
+          <img class="LogoQuiz" src="images/OhNoQuiz.png">
           <!--</header>-->
+          <!--<div v-if="isConnected">
+            Bonjour {{ user.pseudo }} !
+          </div>-->
           <main>
             <router-view
               :user="user"
