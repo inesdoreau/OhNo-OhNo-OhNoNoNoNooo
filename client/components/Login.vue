@@ -2,15 +2,15 @@
     
     <div>
         <h2>Login</h2>
-        <form @submit.prevent="loginUser()">
+        <!--<form @submit.prevent="loginUser()">
             <input v-model="pseudo" placeholder="pseudo">
             <input
             type="password" v-model="password"
             placeholder="password"
             >
       <button type="submit">Se connecter</button>
-    </form>
-    <link rel="stylesheet" type="text/css" href="css/LoginAndRegister.css">
+    </form>-->
+    <!--<link rel="stylesheet" type="text/css" href="css/LoginAndRegister.css">-->
     <form  @submit.prevent="loginUser() ">
 					<span class="register-form-title">
 						Joignez Vous Aux Quiz !
@@ -35,10 +35,11 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
+                        <router-link to='/register' class="login100-form-btn">Register Now</router-link>
+						<!--<a class="txt2" href="#">
 							Register Now !
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
+						</a>-->
 					</div>
     </form>
 
@@ -65,4 +66,8 @@ module.exports = {
         }
     }
 }
-</script>s
+</script>
+
+<style>
+      @import '../CSS/LoginAndRegister.css';
+</style>

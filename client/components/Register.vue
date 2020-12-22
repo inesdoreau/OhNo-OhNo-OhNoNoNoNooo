@@ -1,15 +1,16 @@
 <template>
   <div>
     <h2>Register</h2>
-    <form @submit.prevent="createUser()">
+    <!-- <form @submit.prevent="createUser()">
       <input v-model="pseudo" placeholder="pseudo">
       <input
       type="password" v-model="password"
       placeholder="password"
       >
       <button type="submit">Se créer un compte</button>
-    </form>
-    <link rel="stylesheet" type="text/css" href="css/LoginAndRegister.css">
+    </form> -->
+
+    <!--<link rel="stylesheet" type="text/css" href="CSS/LoginAndRegister.css">-->
     <form  @submit.prevent="createUser() ">
 					<span class="register-form-title">
 						Joignez Vous Aux Quiz !
@@ -60,3 +61,7 @@ module.exports = {
     }
 }
 </script>
+
+<style>
+      @import '../CSS/LoginAndRegister.css';
+</style>

@@ -3,7 +3,7 @@
     <head>
         <title>OhNoQuiz</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="CSS/index.css">
+        <!--<link rel="stylesheet" type="text/css" href="CSS/index.css">-->
         <!-- Load Vue followed by Vue Router -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
@@ -40,22 +40,28 @@
     
     <body>
       <!--<header class="site-header">-->
-        
+        <div id = "app">
           <center>  
             <router-link to='/login' class="login">Log in</router-link>
             <img class="LogoQuiz" src="images/OhNoQuiz.png" >
             <router-link to='/register' class="login">Register</router-link>
           </center>  
-      <!--</header>-->
-      <main>
-        <router-view
-          :user="user"
-          :is-connected="isConnected"
-         @login="login"
-        ></router-view>
-      </main>
+          <!--</header>-->
+          <main>
+            <router-view
+              :user="user"
+              :is-connected="isConnected"
+              @login="login"
+            ></router-view>
+          </main>
+        </div>
+      <script src="/vue-application.js"></script>
     </body>
 </html>
+
+<style>
+  @import 'CSS/index.css';
+</style>
 
 
 
