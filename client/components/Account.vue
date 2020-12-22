@@ -1,10 +1,12 @@
 <template>
-    
     <div>
         <h2>Mon compte</h2>
          Name : {{ user.pseudo }}
 
-    </div>
+        <div>
+         <router-link to='/quizz'>quizz</router-link>
+        </div>
+    </div>   
 </template>
 
 <script>
