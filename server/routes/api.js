@@ -6,10 +6,10 @@ const { Client, Connection } = require('pg')
 
 const client = new Client({
   
-  user: 'slwtkbrbtbvabe',
-  host: 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
-  password: '86f50c1a4be2e9d887b1e083d40432d89335705f5d2a1d9021152a9e59c9c22c',
-  database: 'd8mn9uj7ubh1e0',
+  user: 'postgres',
+  host: 'localhost',
+  password: 'secret',
+  database: 'project'
   
   //process.env.DATABASE_URL
 })
@@ -18,6 +18,19 @@ client.connect()
 
 const users = []
 
+const questions = []
+
+/*class Quizz {
+  constructor () {
+    this.createdAt = new Date()
+    this.updatedAt = new Date()
+    this.questions = []
+  }
+}
+*/
+/**
+ * LOGIN
+ */
 router.post('/login', async (req, res) => {
     const pseudo = req.body.pseudo
     const password = req.body.password
@@ -51,7 +64,11 @@ router.post('/login', async (req, res) => {
       return
     }
   })
-  
+
+
+  /**
+   * REGISTER
+   */
   router.post('/register', async (req, res) => {
     const pseudo = req.body.pseudo
     const password = req.body.password
@@ -81,6 +98,9 @@ router.post('/login', async (req, res) => {
     res.send('ok')
   })
   
+  /**
+   * RECUPERER L'USER
+   */
   router.get('/me', async (req, res) => {
     if (typeof req.session.userId === 'undefined') {
       res.status(401).json({ message: 'not connected' })
@@ -94,5 +114,46 @@ router.post('/login', async (req, res) => {
   
     res.json(result.rows[0])
   })
+
+  /**
+   * RECUPERER LES QUESTIONS
+   */
+  router.get('/ques', async (req, res) => {
+    const result = await client.query({
+      text: 'select * from questions inner join answers on answers."idQuestion" = questions.id'
+    })
+  
+    res.json(result.rows)
+  })
+
+  async function parseQuestion(req, res, next) {
+    const questionId = parseInt(req.params.questionId)
+
+    if(isNaN(questionId)){
+      res.status(400).json({ message: 'questionId should be a number' })
+    return
+    }
+
+    res.questionId = questionId
+
+    const result = await client.query({
+      text: 'select * from questions inner join answers on answers."idQuestion" = questions.id where questions.id = $1',
+      values: [questionId]
+    })
+
+    if (!result.rows.length) {
+      res.status(404).json({ message: 'question ' + questionId + ' does not exist' })
+      return
+    }
+
+    req.question = result.rows
+    next()
+  }
+
+  router.route('/ques/:questionId')
+    .get(parseQuestion, (req, res) =>{
+      res.json(req.question)
+    })
+
 
 module.exports = router
