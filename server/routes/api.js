@@ -46,8 +46,6 @@ router.post('/login', async (req, res) => {
       })
       return
     }
-    // si on a pas trouvé l'utilisateur
-    // alors on le crée
     const user = result.rows[0]
   
     if (await bcrypt.compare(password, user.password)) {
@@ -55,7 +53,8 @@ router.post('/login', async (req, res) => {
       req.session.userId = user.id
       res.json({
         id: user.id,
-        pseudo: user.pseudo
+        pseudo: user.pseudo,
+        isAdmin:user.isAdmin
       })
     } else {
       res.status(401).json({
@@ -108,7 +107,7 @@ router.post('/login', async (req, res) => {
     }
   
     const result = await client.query({
-      text: 'SELECT id, pseudo FROM users WHERE id=$1',
+      text: 'SELECT id, pseudo, "isAdmin" FROM users WHERE id=$1',
       values: [req.session.userId]
     })
   
@@ -120,7 +119,18 @@ router.post('/login', async (req, res) => {
    */
   router.get('/ques', async (req, res) => {
     const result = await client.query({
-      text: 'select * from questions inner join answers on answers."idQuestion" = questions.id'
+      text: 'select * from questions'
+    })
+  
+    res.json(result.rows)
+  })
+
+  /**
+   * RECUPERER LES REPONSES
+   */
+  router.get('/ans', async (req, res) => {
+    const result = await client.query({
+      text: 'select * from answers'
     })
   
     res.json(result.rows)
@@ -154,6 +164,38 @@ router.post('/login', async (req, res) => {
     .get(parseQuestion, (req, res) =>{
       res.json(req.question)
     })
+
+  /**
+   * Creer une question
+   */
+  router.post('/questions', async (req, res) => {
+    const question = req.body.question
+  
+    await client.query({
+      text: `INSERT INTO questions(question)
+      VALUES ($1)
+      `,
+      values: [question]
+    })
+    res.send('ok')
+  })
+
+  /**
+   * Creer une question
+   */
+  router.post('/answers', async (req, res) => {
+    const questionID = req.body.questionID
+    const answer = req.body.answer
+    const isGood = req.body.isGood
+  
+    await client.query({
+      text: `
+      INSERT INTO answers(answer, "isGood", "idQuestion") VALUES ($1, $2, $3)
+      `,
+      values: [answer, isGood, questionID]
+    })
+    res.send('ok')
+  })
 
 
 module.exports = router

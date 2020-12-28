@@ -23,11 +23,14 @@ var app = new Vue({
     user: {},
     isConnected: false,
     questions: [],
+    answers: [],
   },
   async mounted () {
 
     const res2 = await axios.get('/api/ques')
     this.questions = res2.data
+    const res3 = await axios.get('/api/ans')
+    this.answers = res3.data
 
     try {
       const res = await axios.get('/api/me')
@@ -49,6 +52,11 @@ var app = new Vue({
       this.isConnected = true
       this.$router.push('/account')
     },
+
+   /* async fetchQuestions(){
+      const res = await axios.get('/api/ques')
+      this.questions = res.data
+    },*/
 
     async nextQues (number) {
       this.$router.push('/api/ques/' + number)

@@ -49,7 +49,8 @@ module.exports = {
     data () {
         return {
             pseudo: '',
-            password: ''
+            password: '',
+            isAdmin: ''
         }
     },
     async mounted () {
