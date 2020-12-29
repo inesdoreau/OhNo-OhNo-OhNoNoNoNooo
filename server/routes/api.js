@@ -6,12 +6,12 @@ const { Client, Connection } = require('pg')
 
 const client = new Client({
   
-  user: 'postgres',
+  /*user: 'postgres',
   host: 'localhost',
   password: 'secret',
-  database: 'project'
+  database: 'project'*/
   
-  //process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL
 })
 
 client.connect()
