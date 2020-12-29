@@ -11,5 +11,5 @@
 
 
 <style>
-      @import '../CSS/index.html';
+      @import '../CSS/index.css';
 </style>

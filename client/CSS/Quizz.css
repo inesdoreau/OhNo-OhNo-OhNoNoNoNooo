@@ -1,0 +1,113 @@
+#quiz-container {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 750px;
+  }
+
+#logo-headline {
+    font-size: 3rem;
+    padding: 0.5rem;
+    color: #f50057;
+    text-align: center;
+  }
+
+h1 {
+  font-size: 1.3rem;
+  padding: 0.7rem;
+}
+
+.divider {
+  margin: 0.5rem 0;
+  border: 3px solid rgba(102, 255, 166, 0.7);
+  border-radius: 2px;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin: 0.3rem;
+  width: 47%;
+  background-color: rgba(100, 100, 100, 0.3);
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+button:hover:enabled {
+  transform: scale(1.02);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active:enabled {
+  transform: scale(1.05);
+}
+
+@keyframes flashButton {
+  0% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+button.clicked {
+  pointer-events: none;
+}
+
+button.rightAnswer {
+  animation: flashButton;
+  animation-duration: 700ms;
+  animation-delay: 200ms;
+  animation-iteration-count: 3;
+  animation-timing-function: ease-in-out;
+  color: black;
+  background: linear-gradient(
+    210deg,
+    rgba(0, 178, 72, 0.25),
+    rgba(0, 178, 72, 0.5)
+  );
+}
+
+button.wrongAnswer {
+  color: black;
+  background: linear-gradient(
+    210deg,
+    rgba(245, 0, 87, 0.25),
+    rgba(245, 0, 87, 0.5)
+  );
+}
+
+button.showRightAnswer {
+  animation: flashButton;
+  animation-duration: 700ms;
+  animation-delay: 200ms;
+  animation-iteration-count: 2;
+  animation-timing-function: ease-in-out;
+  color: black;
+  background: linear-gradient(
+    210deg,
+    rgba(0, 178, 72, 0.25),
+    rgba(0, 178, 72, 0.5)
+  );
+}

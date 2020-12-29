@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="quiz-container">
     <!--
     <h2> {{ questions[number*4 - 1].question}} </h2>
     
@@ -13,27 +13,21 @@
     </div>-->
     <h1 id="logo-headline">Quiz</h1>
     <!-- div#correctAnswers -->
+
     <hr class="divider" />
     <div>
-      <h1 v-html="loading ? 'Loading...' : currentQuestion.question"></h1>
+      <h1 v-html="currentQuestion.question"></h1>
       <form v-if="currentQuestion">
+      <!--<div v-for="answer in answers" :key="answer" >-->
         <button
-          v-for="answer in answers"
-          :index="currentQuestion.key"
+          v-for="answer in currentAnswers"
+          :index="currentQuestion.id"
           :key="answer"
-          v-html="answer"
+          v-html="answer.answer"
           @click.prevent="handleButtonClick"
         ></button>
+      
       </form>
-      <!--<h2> {{ questions[number].question}} </h2>
-      <div v-for="answer in answers" :key="answer.id" >
-        <button class="answers" 
-        v-if="questions[number].id == answer.idQuestion" 
-        @click.prevent="handleButtonClick">
-          - {{ answer.answer }}
-        </button>        
-      </div>
-      -->
 
     <hr class="divider" />
   </div>
@@ -44,60 +38,93 @@ module.exports = {
   props: {
     questions: {type: Array, default: []},
     answers: {type: Array, default:[]},
-    loading: true
   },
   data () {
     return {
-        index: 0,
+      index: 0,
+      score:0,
     }
   },
   computed: {
       currentQuestion() {
         if (this.questions !== []) {
-          return this.questions[this.index];
+          return this.questions[this.index]
         }
-        return null;
+        return null
       },
-      currentAnswers(){
-        
-      }
+      currentAnswers: function() {
+        return this.answers.filter(i=> i.idQuestion === this.questions[this.index].id )
+      },
+      correctAnswer: function(){
+        return this.answers.filter(j=>j.isGood === true)
+      },
+      
     },
   methods: {
-    nextQues (number) {
-      this.$emit('next-quest', number)
-    },
-    // methods of Quiz.vue
     handleButtonClick: function(event) {
+      /* Find index to identiy question object in data */
+      let index = event.target.getAttribute("index")
+
+      let pollutedUserAnswer = event.target.innerHTML // innerHTML is polluted with decoded HTML entities e.g ' from &#039;
+      /* Clear from pollution with ' */
+      let userAnswer = pollutedUserAnswer.replace(/'/, "&#039;")
+      /* Set userAnswer on question object in data */
+      this.questions[index].userAnswer = userAnswer
+
+      /* Set class "clicked" on button with userAnswer -> for CSS Styles; Disable other sibling buttons */
+      event.target.classList.add("clicked")
+      let allButtons = document.querySelectorAll(`[index="${index}"]`)
+
+      for (let i = 0; i < allButtons.length; i++) {
+        if (allButtons[i] === event.target) continue
+
+        allButtons[i].setAttribute("disabled", "")
+      }
+
       /* Invoke checkAnswer to check Answer */
-      number++
+      this.checkAnswer(event, index)
+    },
+
+    checkAnswer: function(event, index) {
+      let question = this.questions[index]
+      let answer = this.correctAnswer[this.index]
+
+      if (question.userAnswer) {
+        if (this.index < this.questions.length - 1) {
+          setTimeout(
+            function() {
+              this.index += 1
+            }.bind(this),
+            3000
+          );
+        }
+
+        if (question.userAnswer === answer.answer) {
+
+          /* Set class on Button if user answered right, to celebrate right answer with animation joyfulButton */
+          event.target.classList.add("rightAnswer")
+          /* Set rightAnswer on question to true, computed property can track a streak out of 10 questions */
+          this.questions[index].rightAnswer = true
+          
+        } else {
+          /* Mark users answer as wrong answer */
+          event.target.classList.add("wrongAnswer")
+          this.questions[index].rightAnswer = false
+          /* Show right Answer */
+          let correct_answer = this.correctAnswer[this.index]
+          let allButtons = document.querySelectorAll(`[index="${index}"]`)
+          allButtons.forEach(function(button) {
+            if (button.innerHTML === correct_answer.answer) {
+              button.classList.add("showRightAnswer")
+            }
+          });
+        }
+      }  
     },
   }
 }
 </script>
 
-<style scoped>
-article {
-  display: flex;
-}
-
-.question-title {
-  display: flex;
-  justify-content: space-between;
-}
-
-textarea {
-  width: 100%;
-}
-
-  h1 {
-    font-size: 1.3rem;
-    padding: 0.7rem;
-  }
-
-  .divider {
-    margin: 0.5rem 0;
-    border: 3px solid rgba(102, 255, 166, 0.7);
-    border-radius: 2px;
-    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
-  }
+<style>
+  @import '../CSS/Quizz.css';
 </style>
