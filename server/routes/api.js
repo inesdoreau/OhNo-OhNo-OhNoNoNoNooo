@@ -168,12 +168,11 @@ router.post('/login', async (req, res) => {
   /**
    * Creer une question
    */
-  router.post('/questions', async (req, res) => {
+  router.post('/question', async (req, res) => {
     const question = req.body.question
   
     await client.query({
-      text: `INSERT INTO questions(question)
-      VALUES ($1)
+      text: `INSERT INTO questions(question) VALUES ($1)
       `,
       values: [question]
     })

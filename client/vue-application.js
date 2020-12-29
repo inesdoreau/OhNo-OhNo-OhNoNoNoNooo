@@ -3,6 +3,7 @@ const Register = window.httpVueLoader('./components/Register.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Account = window.httpVueLoader('./components/Account.vue')
 const Quizz = window.httpVueLoader('./components/Quizz.vue')
+const AddQuestions = window.httpVueLoader('./components/AddQuestions.vue')
 
 const routes = [
   { path: '/', component: Home },
@@ -10,6 +11,7 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/account', component: Account },
   { path: '/quizz', component: Quizz },
+  { path: '/question', component: AddQuestions},
 ]
 
 const router = new VueRouter({
@@ -53,10 +55,15 @@ var app = new Vue({
       this.$router.push('/account')
     },
 
-   /* async fetchQuestions(){
-      const res = await axios.get('/api/ques')
-      this.questions = res.data
-    },*/
+    async addQuestion (question) {
+      const res = await axios.post('/api/question', question)
+      this.questions.push(res.data)
+    },
+
+    async addAnswers (answer) {
+      const res = await axios.post('/api/answers', answer)
+      this.answers.push(res.data)
+    },
 
     async nextQues (number) {
       this.$router.push('/api/ques/' + number)

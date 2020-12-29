@@ -6,7 +6,7 @@
          <router-link to='/quizz'>quizz</router-link>
         </div>
         <div v-if="user.isAdmin">
-            Admin ! // A faire : implémenter une setcion de création de quiz
+            <router-link to='/question'>Ajouter une question</router-link>
         </div>
 
     </div>   

@@ -1,16 +1,5 @@
 <template>
   <div id="quiz-container">
-    <!--
-    <h2> {{ questions[number*4 - 1].question}} </h2>
-    
-    <article v-for="question in questions" :key="question.id">
-      <div class="question-content" v-if="question.idQuestion == number">
-          <p> - {{ question.answer }}</p>
-      </div>
-    </article>
-    <div>
-        <button @click="nextQues(number++)">Next</button>
-    </div>-->
     <h1 id="logo-headline">Quiz</h1>
     <!-- div#correctAnswers -->
 
