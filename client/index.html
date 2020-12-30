@@ -15,15 +15,18 @@
       <!--<header class="site-header">-->
         <div id = "app">
           <img class="LogoQuiz" src="images/OhNoQuiz.png">
+          
           <main>
             <router-view
               :user="user"
               :is-connected="isConnected"
               :questions="questions"
               :answers="answers"
+              :score="score"
               @login="login"
               @add-question="addQuestion"
               @add-answers="addAnswers"
+              @add-score="addScore"
             ></router-view>
           </main>
         </div>

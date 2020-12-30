@@ -4,6 +4,7 @@ const Login = window.httpVueLoader('./components/Login.vue')
 const Account = window.httpVueLoader('./components/Account.vue')
 const Quizz = window.httpVueLoader('./components/Quizz.vue')
 const AddQuestions = window.httpVueLoader('./components/AddQuestions.vue')
+const Final = window.httpVueLoader('./components/Final.vue')
 
 const routes = [
   { path: '/', component: Home },
@@ -12,6 +13,7 @@ const routes = [
   { path: '/account', component: Account },
   { path: '/quizz', component: Quizz },
   { path: '/question', component: AddQuestions},
+  { path: '/final', component: Final}
 ]
 
 const router = new VueRouter({
@@ -26,6 +28,7 @@ var app = new Vue({
     isConnected: false,
     questions: [],
     answers: [],
+    score: {},
   },
   async mounted () {
 
@@ -65,8 +68,10 @@ var app = new Vue({
       this.answers.push(res.data)
     },
 
-    async nextQues (number) {
-      this.$router.push('/api/ques/' + number)
+    async addScore (user) {
+      const res = await axios.post('/api/score', user)
+      this.user = res.data
+      this.$router.push('/final')
     }
   }
 })

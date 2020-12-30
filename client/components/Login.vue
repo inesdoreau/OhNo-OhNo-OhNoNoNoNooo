@@ -33,7 +33,8 @@ module.exports = {
         return {
             pseudo: '',
             password: '',
-            isAdmin: ''
+            isAdmin: '', 
+            score: ''
         }
     },
     async mounted () {

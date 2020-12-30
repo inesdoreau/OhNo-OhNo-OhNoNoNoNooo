@@ -2,6 +2,7 @@
     <div>
         <h2>Mon compte</h2>
          Name : {{ user.pseudo }}
+         Score : {{ user.score }}
         <div>
          <router-link to='/quizz'>quizz</router-link>
         </div>
