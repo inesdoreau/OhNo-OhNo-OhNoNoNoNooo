@@ -6,12 +6,12 @@ const { Client, Connection } = require('pg')
 
 const client = new Client({
   
-  /*user: 'postgres',
+  user: 'postgres',
   host: 'localhost',
   password: 'secret',
-  database: 'project'*/
+  database: 'project'
   
-  connectionString: process.env.DATABASE_URL
+  //connectionString: process.env.DATABASE_URL
 })
 
 client.connect()
@@ -107,11 +107,38 @@ router.post('/login', async (req, res) => {
     }
   
     const result = await client.query({
-      text: 'SELECT id, pseudo, "isAdmin" FROM users WHERE id=$1',
+      text: 'SELECT id, pseudo, "isAdmin", score FROM users WHERE id=$1',
       values: [req.session.userId]
     })
   
     res.json(result.rows[0])
+  })
+
+  /**
+   * ENVOYER LES SCORES DU QUIZZ
+   */
+  router.post('/score', async (req, res) => {
+    const userID = req.session.userId
+    const score = req.body.score
+  
+    const result = await client.query({
+      text: 'UPDATE users SET "score" = $1::integer WHERE id=$2',
+      values: [score, userID]
+    })
+
+    res.json(result.rows)
+  })
+
+  /**
+   * RECUPERER LE SCORE DE L'UTILISATEUR
+   */
+  router.get('/score', async (req, res) => {
+    const user = req.body.user
+
+    const result = await client.query({
+      text: 'select * from score where user = $1',
+      values: [user]
+    })
   })
 
   /**

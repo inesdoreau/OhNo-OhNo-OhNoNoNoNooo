@@ -1,9 +1,8 @@
 <template>
   <div id="quiz-container">
     <h1 id="logo-headline">Quiz</h1>
-    <!-- div#correctAnswers -->
-    {{ user.score }}
     <hr class="divider" />
+    {{ user.score }}
     <div>
       <h1 v-html="currentQuestion.question"></h1>
       <form v-if="currentQuestion">
@@ -94,7 +93,6 @@ module.exports = {
 
       /* Invoke checkAnswer to check Answer */
       this.checkAnswer(event, index)
-      
       this.quizCompleted(this.quizComplet)
     },
 
