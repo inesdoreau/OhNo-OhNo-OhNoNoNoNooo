@@ -2,12 +2,16 @@
     <div>
         <h2>Mon compte</h2>
          Name : {{ user.pseudo }}
-         Score : {{ user.score }}
+
+         <div>
+            Score : {{ user.score }}
+        </div>
+
         <div>
          <router-link to='/quizz'>quizz</router-link>
         </div>
         <div>
-         <router-link to='/learderboard'>learderboard</router-link>
+         <router-link to='/leaderboard'>leaderboard</router-link>
         </div>
         <div v-if="user.isAdmin">
             <router-link to='/question'>Ajouter une question</router-link>
@@ -26,11 +30,9 @@ module.exports = {
     props: {
         user: {type: Object},
     },
-    data () {
-        return {
-        }
-    },
+    
     async mounted () {
+        
     },
     methods: {
         async logout() {

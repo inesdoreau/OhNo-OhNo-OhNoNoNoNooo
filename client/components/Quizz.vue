@@ -73,7 +73,8 @@ module.exports = {
 
     handleButtonClick: function (event) {
       /* Find index to identiy question object in data */
-      let index = event.target.getAttribute("index")
+      let index = this.index +1
+
 
       let pollutedUserAnswer = event.target.innerHTML // innerHTML is polluted with decoded HTML entities e.g ' from &#039;
       /* Clear from pollution with ' */
@@ -103,6 +104,11 @@ module.exports = {
       let question = this.questions[this.index]
       let answer = this.correctAnswer[this.index]
 
+      str = JSON.stringify(this.index)
+        console.log(str)
+        str = JSON.stringify(index)
+        console.log(str)
+
       if (question.userAnswer) {
         if (this.index < this.questions.length  ) {
           setTimeout(
@@ -112,7 +118,9 @@ module.exports = {
             300 //DONT FORGET TO CHANGE THE TIME TO 3000
           )
         }
-        str = JSON.stringify(this.index)
+        str = JSON.stringify(question.userAnswer)
+        console.log(str)
+        str = JSON.stringify(answer.answer)
         console.log(str)
 
         if (question.userAnswer === answer.answer) {

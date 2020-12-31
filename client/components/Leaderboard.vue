@@ -1,9 +1,9 @@
 <template>
   <div >
       <h2>Leaderboard</h2>
-      <article v-for="user in users" :key="user.id">
-          <div v-if="user.score != null">
-            {{user.pseudo}} - {{user.score}}
+      <article v-for="userB in users" :key="userB.id">
+          <div v-if="userB.score != null">
+            {{userB.pseudo}} - {{userB.score}}
           </div>
       </article>
 
