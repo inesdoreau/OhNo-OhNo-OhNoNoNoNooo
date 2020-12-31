@@ -5,6 +5,7 @@ const Account = window.httpVueLoader('./components/Account.vue')
 const Quizz = window.httpVueLoader('./components/Quizz.vue')
 const AddQuestions = window.httpVueLoader('./components/AddQuestions.vue')
 const Final = window.httpVueLoader('./components/Final.vue')
+const Leaderboard = window.httpVueLoader('./components/Leaderboard.vue')
 
 const routes = [
   { path: '/', component: Home },
@@ -13,7 +14,8 @@ const routes = [
   { path: '/account', component: Account },
   { path: '/quizz', component: Quizz },
   { path: '/question', component: AddQuestions},
-  { path: '/final', component: Final}
+  { path: '/final', component: Final},
+  { path: '/leaderboard', component: Leaderboard},
 ]
 
 const router = new VueRouter({
@@ -25,6 +27,7 @@ var app = new Vue({
   el: '#app',
   data: {
     user: {},
+    users: [],
     isConnected: false,
     questions: [],
     answers: [],
@@ -36,6 +39,8 @@ var app = new Vue({
     this.questions = res2.data
     const res3 = await axios.get('/api/ans')
     this.answers = res3.data
+    const res4 = await axios.get('/api/users')
+    this.users = res4.data
 
     try {
       const res = await axios.get('/api/me')
@@ -72,6 +77,11 @@ var app = new Vue({
       const res = await axios.post('/api/score', user)
       this.user = res.data
       this.$router.push('/final')
+    },
+
+    async logout(){
+      await axios.post('/api/logout')
+      this.$router.push('/')
     }
   }
 })

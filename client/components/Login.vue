@@ -17,6 +17,7 @@
             <button class="login100-form-btn">
                 <boo>Let's GO !</boo>
             </button>
+        </div>
     </form>
     
 

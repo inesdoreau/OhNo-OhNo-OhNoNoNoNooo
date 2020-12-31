@@ -4,27 +4,17 @@
       <div class="final-wrapper">
         <div class="final-container">
           <div class="final-header">
-            <h2>{{ header }}</h2>
-            <h3>{{ subheader }}</h3>
+            <h2>Congrats {{ user.pseudo }}! </h2>
           </div>
 
           <div class="final-body">
             <div id="score">
-              Congrats ! You finish the quiz
-            </div>
-            <div id="chooseCategory">
-              Wanna choose another category? (I am working on this feature!)
+              Congrats ! You finish the quiz 
+              This is your score : {{ user.score }}
             </div>
           </div>
 
           <div class="final-footer">
-            <!--<button
-              id="play-again"
-              class="button-footer"
-              @click="$emit('/quizz')"
-            >
-              Play Again
-            </button>-->
             <router-link to='/quizz' 
               id="play-again"
               class="button-footer">
@@ -36,14 +26,6 @@
               class="button-footer">
             Close
             </router-link>
-            
-            <!--<button
-              id="close-button"
-              class="button-footer"
-              @click="$emit('/account')"
-            >
-              Close
-            </button>-->
           </div>
         </div>
       </div>
