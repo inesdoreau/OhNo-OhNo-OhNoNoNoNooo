@@ -1,7 +1,7 @@
 
 
 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -27,27 +27,28 @@
 
 :root {
   --background: #E5FFB3;
-  --background-accent: #DBF8A3;
-  --background-accent-2: #BDE66E;
   --light: #92DE34;
   --dark: #69BC22;
-  --text: #025600;
+  --darker: #025600;
 }
 
 html {
   height: 100%;
-  font-family: Poppins, sans-serif ;
 }
 
 body {
   margin:0;
   padding:0;
   font-family: sans-serif;
-  background: #E5FFB3
+  background: var(--background)
+}
+
+div{
+  font-family: 'Poppins', "Times New Roman", Times, serif;
 }
 
 
-.login-box {
+.form-box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -60,47 +61,37 @@ body {
   border-radius: 10px;
 }
 
-.login-box h2 {
-  margin: 0 0 30px;
-  padding: 0;
-  color: var(--text);
-  font-size: 3rem;
-  text-align: center;
-  text-decoration: underline;
-  margin-bottom: 50px;
-}
-
-.login-box .user-box {
+.form-box .user-box {
   position: relative;
 }
 
-.login-box .user-box input {
+.form-box .user-box input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: var(--darker);
   margin-bottom: 30px;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--darker);
   outline: none;
   background: transparent;
 }
-.login-box .user-box label {
+.form-box .user-box label {
   position: absolute;
   top:0;
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: var(--text);
   pointer-events: none;
   transition: .5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.form-box .user-box input:focus ~ label,
+.form-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color:var(--text);
+  color:var(--darker);
   font-size: 12px;
   font-weight: 1000;
 }
@@ -108,7 +99,7 @@ body {
 
 
 
-.login-box button {
+.form-box button {
   display: block;
   cursor: pointer;
   outline: none;
@@ -119,7 +110,7 @@ body {
   border-radius: 30px;
   font-size: 2rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--darker);
   background-size: 100% 100%;
   box-shadow: 0 0 0 7px var(--dark) inset;
   margin: 0 auto;
@@ -127,7 +118,7 @@ body {
   margin-bottom: 30px;
 }
 
-.login-box button:hover {
+.form-box button:hover {
   background-image: linear-gradient(
     145deg,
     transparent 10%,
@@ -143,6 +134,10 @@ body {
     
   );
   animation: background 3s linear infinite;
+
+  transform:scale(1.2);
+  transition: all 1000ms linear;
+
 }
 
 @keyframes background {
@@ -154,19 +149,95 @@ body {
   }
 }
 
-.login-box .registerLink{
+.form-box .registerLink{
     text-align: center;
 }
 
-.login-box .registerLink:visited{
-  color: var(--dark);
+
+boo{
+  display:inline-block;
+  transform:scale(1);
+  transition: all 100ms linear;
+}
+button:hover > boo{
+ font-weight: 700;
+ transform:scale(1.8);
+ transition: all 1000ms linear;
 }
 
 
+/* Pulse Grow */
+@-webkit-keyframes hvr-pulse-grow {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+@keyframes hvr-pulse-grow {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+.title-form {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
-.login-box .registerLink:hover{
+  margin: 0 0 30px;
+  padding: 0;
+  color: var(--darker);
+  font-size: 3rem;
   text-align: center;
-  font-weight: bold;
-  text-decoration-color: #fff;
+  margin-bottom: 50px;
 }
 
+
+.title-form:hover, .title-form:focus, .title-form:active {
+  -webkit-animation-name: hvr-pulse-grow;
+  animation-name: hvr-pulse-grow;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+
+/* Underline From Center */
+.redirection-form {
+  font-size: 15px;
+  color: var(--darker);
+  text-decoration: none;
+
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  overflow: hidden;
+}
+.redirection-form:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: var(--dark);
+  height: 2px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.redirection-form:hover:before, .redirection-form:focus:before, .redirection-form:active:before {
+  left: 0;
+  right: 0;
+}

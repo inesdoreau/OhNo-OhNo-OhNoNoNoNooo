@@ -1,7 +1,7 @@
 <template>
     
-    <div class="login-box">
-        <h2>Login</h2>
+    <div class="form-box">
+        <h2 class="title-form">Login</h2>
     <form  @submit.prevent="loginUser() ">
         <div class="registerInfo validate-input user-box" >
             <input v-model="pseudo" class="inputinfo" type="text" required>
@@ -15,13 +15,13 @@
         
         <div class="container-login100-form-btn">
             <button class="login100-form-btn">
-                Let's GO !
+                <boo>Let's GO !</boo>
             </button>
     </form>
     
 
     <div class="text-center p-t-136 registerLink">
-        <router-link to='/register' class="login100-form-btn">No account ? Register Now !</router-link>
+        <router-link to='/register' class="login100-form-btn redirection-form">Pas encore de compte ? Allez-vous inscrire !</router-link>
     </div>
 
     </div>
