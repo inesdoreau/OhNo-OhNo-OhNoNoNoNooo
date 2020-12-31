@@ -1,14 +1,30 @@
 <template>
-    <div>
-        <h2>Login</h2>
-        <form @submit.prevent="loginUser()">
-            <input v-model="pseudo" placeholder="pseudo">
-            <input
-            type="password" v-model="password"
-            placeholder="password"
-            >
-      <button type="submit">Se connecter</button>
+    
+    <div class="form-box">
+        <h2 class="title-form">Login</h2>
+    <form  @submit.prevent="loginUser() ">
+        <div class="registerInfo validate-input user-box" >
+            <input v-model="pseudo" class="inputinfo" type="text" required>
+            <label>Pseudo</label>
+        </div>
+
+        <div class="registerInfo validate-input user-box" >
+            <input v-model="password" class="inputinfo" type="password" required>
+            <label>Mot de Passe</label>
+        </div>
+        
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn">
+                <boo>Let's GO !</boo>
+            </button>
+        </div>
     </form>
+    
+
+    <div class="text-center p-t-136 registerLink">
+        <router-link to='/register' class="login100-form-btn redirection-form">Pas encore de compte ? Allez-vous inscrire !</router-link>
+    </div>
+
     </div>
 </template>
 
@@ -17,7 +33,9 @@ module.exports = {
     data () {
         return {
             pseudo: '',
-            password: ''
+            password: '',
+            isAdmin: '', 
+            score: ''
         }
     },
     async mounted () {
@@ -32,4 +50,8 @@ module.exports = {
         }
     }
 }
-</script>s
+</script>
+
+<style>
+      @import '../CSS/LoginAndRegister.css';
+</style>

@@ -1,1 +1,6 @@
-c'est Léo de 8 ans dans le futur askip j'ai reussi a me connecter à github
+npm install 
+npm start
+
+https://dashboard.heroku.com/apps/ohnoohno/deploy/github
+
+https://ohnoohno.herokuapp.com/ 

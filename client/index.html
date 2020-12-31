@@ -1,36 +1,44 @@
-<!doctype>
+<!DOCTYPE HTML>
 <html lang="fr">
     <head>
+        <title>OhNoQuiz</title>
         <meta charset="utf-8">
-        <title>OhNo OhNo OhNoNoNoNo</title>
+        <!--<link rel="stylesheet" type="text/css" href="CSS/index.css">-->
         <!-- Load Vue followed by Vue Router -->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
     </head>
     <body>
-        <div id="app">
-          <header>
-            <h1>Test</h1>
-            <nav>
-              <div v-if="isConnected">
-                Bonjour {{ user.pseudo }} !
-              </div>
-              <div v-else>
-                <router-link to='/register'>Register</router-link>
-                <router-link to='/login'>Login</router-link>
-              </div>
-            </nav>
-          </header>
+      <!--<header class="site-header">-->
+        <div id = "app">
+          <img class="LogoQuiz" src="images/OhNoQuiz.png">
+          
           <main>
             <router-view
               :user="user"
               :is-connected="isConnected"
+              :questions="questions"
+              :answers="answers"
+              :score="score"
+              :users="users"
               @login="login"
+              @logout="logout"
+              @add-question="addQuestion"
+              @add-answer="addAnswers"
+              @add-score="addScore"
             ></router-view>
           </main>
         </div>
-        <script src="/vue-application.js"></script>
+      <script src="/vue-application.js"></script>
     </body>
 </html>
+
+<style>
+  @import 'CSS/index.css';
+</style>
+
+
+
