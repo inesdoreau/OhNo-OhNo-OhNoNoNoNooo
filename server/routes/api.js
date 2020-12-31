@@ -114,16 +114,36 @@ router.post('/login', async (req, res) => {
     res.json(result.rows[0])
   })
 
+  router.post('/logout', async (req, res) => {
+    if (typeof req.session.userId === 'undefined') {
+      res.status(401).json({ message: 'not connected' })
+      return
+    }
+  
+    req.session.userId = null
+    res.send('ok')
+  })
+
+  /**
+   * RECUPERER TOUS LES USERS ET LEUR SCORES
+   */
+  router.get('/users', async (req, res) => {
+    const result = await client.query({
+      text: 'SELECT * FROM users ORDER BY score DESC'
+    })
+
+    res.json(result.rows)
+  })
+
   /**
    * ENVOYER LES SCORES DU QUIZZ
    */
-  router.post('/score', async (req, res) => {
-    const userID = req.session.userId
+  router.put('/score', async (req, res) => {
     const score = req.body.score
   
     const result = await client.query({
-      text: 'UPDATE users SET "score" = $1::integer WHERE id=$2',
-      values: [score, userID]
+      text: 'UPDATE users SET score= $1 WHERE id=$2',
+      values: [score, req.session.userId]
     })
 
     res.json(result.rows)
@@ -145,6 +165,8 @@ router.post('/login', async (req, res) => {
    * RECUPERER LES QUESTIONS
    */
   router.get('/ques', async (req, res) => {
+    
+
     const result = await client.query({
       text: 'select * from questions'
     })
@@ -156,8 +178,9 @@ router.post('/login', async (req, res) => {
    * RECUPERER LES REPONSES
    */
   router.get('/ans', async (req, res) => {
+    
     const result = await client.query({
-      text: 'select * from answers'
+      text: 'select * from answers ORDER BY id'
     })
   
     res.json(result.rows)
