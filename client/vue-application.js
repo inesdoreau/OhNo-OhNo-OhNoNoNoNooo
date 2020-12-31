@@ -4,6 +4,7 @@ const Login = window.httpVueLoader('./components/Login.vue')
 const Account = window.httpVueLoader('./components/Account.vue')
 const Quizz = window.httpVueLoader('./components/Quizz.vue')
 const AddQuestions = window.httpVueLoader('./components/AddQuestions.vue')
+const AddAnswers = window.httpVueLoader('./components/AddAnswers.vue')
 const Final = window.httpVueLoader('./components/Final.vue')
 const Leaderboard = window.httpVueLoader('./components/Leaderboard.vue')
 
@@ -14,6 +15,7 @@ const routes = [
   { path: '/account', component: Account },
   { path: '/quizz', component: Quizz },
   { path: '/question', component: AddQuestions},
+  { path: '/answer', component: AddAnswers},
   { path: '/final', component: Final},
   { path: '/leaderboard', component: Leaderboard},
 ]

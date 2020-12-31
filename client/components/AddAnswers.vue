@@ -1,34 +1,65 @@
 <template>
-    <form v-show="show" @submit.prevent="addAnswers()">
-        <h2>New Answer</h2>
-        <input type="text" v-model="newAnswer.name" placeholder="Answer" required>
-        <div>
-            <input type="checkbox" id="isGood" name="isGood" >
-            <label for="isGood"> Is Good</label>
-        </div>
+<div>
+
+
+    <form ref="answer" @submit.prevent="addAnswer()">
+        <h2>newAnswer:</h2>
+        <input type="text" v-model="newAnswer.answer" placeholder="Answer" required><br>
+        <input type="radio" name="True" v-model="newAnswer.isGood" value="true"> 
+        <label for="True"> True </label><br>
+        <input type="radio" name="False" v-model="newAnswer.isGood" value="false" checked> 
+        <label for="False"> False </label><br>
+        <input type="hidden" v-model="newAnswer.questionID">
         <button type="submit">Ajouter</button>
     </form>
+
+    <div>
+     <router-link to='/question'>Ajouter une autre question ?</router-link>
+    </div>
+     <div>
+     <router-link to='/account'>Retourner à l'accueil</router-link>
+    </div>
+</div>
 </template>
  
 <script>
+
 module.exports = {
+  components: {
+  },
   props: {
-    show: Boolean
+    questions: { type: Array, default: [] },
   },
   data () {
     return {
         newAnswer: {
             answer: '',
             isGood: '',
-            quuestionId: 4
-        }
+            questionId: ''
+        },
+        showForm: false,
     }
   },
-  methods: {
-    addAnswers () {
-        this.$emit('create-answer', this.newAnswer)
+  computed: {
+    questionID() {
+      if (this.questions !== []) {
+        return this.questions.length + 1
+      }
+      return null
     },
-  }
+  },
+  methods: {
+
+    addAnswer () {
+        this.$emit('add-answer', this.newAnswer)
+        this.$refs.answer.reset();
+    },
+  },
+  mounted() {
+    //str = JSON.stringify(this.questions.length)
+    //console.log(str)
+    this.newAnswer.questionID = this.questions.length + 1
+  },
 }
 </script>
  
