@@ -18,15 +18,15 @@ Le modèle de base de donnée pour l’inscription sera de la forme :
 * id du joueur
 * pseudo
 * mot de passe
+* is Admin
   
-La base de donnée comprendra aussi une table pour enregistrer les scores des joueurs qui sera de la forme :
-* id de la partie
-* temps effectué
+Pour enregistrer le score du joueur nous avons décidé de rajouter dans la table de nos utilisateur une colonne pour envoyer son score pour un quiz (pour le moment)
+* id du joueur
+* pseudo
+* mot de passe
+* is Admin
 * score
-  
-Et nous aurons une table permettant de mettre en commun les résultats des parties en fonctions des joueurs sous la forme :
- * id joueur
- * id de la partie
+ 
   
 La partie sera gérée par un Vue JS afin d’avoir un défilement des questions dynamiques et de ne pas changer de pages entre chaque question.
 
