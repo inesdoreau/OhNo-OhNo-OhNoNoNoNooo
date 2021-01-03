@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+:root {
+
+    --background: #EAE2B7;
+    --light: #FCBF49;
+    --medium: #F77F00;
+    --dark: #D62828;
+    --darker: #003049;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', "Times New Roman", Times, serif;
+    background: var(--background)
+  }
+
+ 
+  .account-box{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    padding: 40px;
+    
+    transform: translate(-50%, -50%);
+    background:  var(--light);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+
+  .box{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    padding: 20px;
+    margin-top : 30px;
+    transform: translate(-50%, -50%);
+    background:  var(--medium);
+    box-sizing: border-box;
+    box-shadow: 0 5px 5px rgba(0,0,0,.2);
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .title{
+    margin: 0 0 30px;
+    padding: 0;
+    color: var(--darker);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .text{
+    margin: 0 0 10px;
+    padding: 10;
+    color: var(--darker);
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 10px;
+ }
+
+ .greeting{
+     font-weight: bold;
+ }
+
+ /* Buzz */
+@-webkit-keyframes hvr-buzz {
+    50% {
+      -webkit-transform: translateX(3px) rotate(2deg);
+      transform: translateX(3px) rotate(2deg);
+    }
+    100% {
+      -webkit-transform: translateX(-3px) rotate(-2deg);
+      transform: translateX(-3px) rotate(-2deg);
+    }
+  }
+  @keyframes hvr-buzz {
+    50% {
+      -webkit-transform: translateX(3px) rotate(2deg);
+      transform: translateX(3px) rotate(2deg);
+    }
+    100% {
+      -webkit-transform: translateX(-3px) rotate(-2deg);
+      transform: translateX(-3px) rotate(-2deg);
+    }
+  }
+  .score {
+    margin: 0 0 0px;
+    padding: 0;
+    color: var(--darker);
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .score:hover, .score:focus, .score:active {
+    -webkit-animation-name: hvr-buzz;
+    animation-name: hvr-buzz;
+    -webkit-animation-duration: 0.15s;
+    animation-duration: 0.15s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+  
+
+  .box:hover > .link{
+    color: var(--medium);
+    font-weight: bold;
+  }
+
+  .box:hover{
+      background: var(--background);
+  }
+
+  /* Underline From Center */
+  .link{
+    text-decoration: none;
+    color: var(--background);
+  }
+
+

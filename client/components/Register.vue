@@ -30,7 +30,7 @@
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							<boo>Let's GO !</boo>
+							<div class='boo'>Let's GO !</div>
 						</button>
 					</div>
 
