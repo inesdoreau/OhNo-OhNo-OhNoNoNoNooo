@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+
+:root {
+
+  --background: #EAE2B7;
+  --light: #FCBF49;
+  --medium: #F77F00;
+  --dark: #D62828;
+  --darker: #003049;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', "Times New Roman", Times, serif;
+  background: var(--background)
+}
+
+.leaderboard-box
+{
+    margin-top: 12%;
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 400px;
+    padding: 40px;
+    
+    transform: translate(-50%, -50%);
+}
+
+
+
+.title{
+    margin: 0 0 30px;
+    padding: 0;
+    color: var(--darker);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+
+  .row{
+    background:  var(--light);
+    color: var(--darker);
+    font-size: 1.2rem;
+    margin:10px auto;
+    padding: 10px;
+
+    position: relative;
+	display: block;
+
+    border-bottom: 1px solid var(--medium);
+
+  }
+
+  .row:hover{
+      background:  var(--medium);
+      border-bottom: 1px solid var(--dark);
+    }
+
+  .row-name{
+      position: relative;
+	  display: inline-block;
+      text-align: left;
+      width: 85%;
+
+    }
+
+  .row-score{
+      font-weight: bold;
+      position: relative;
+	  display: inline-block;
+      text-align: right;
+      width: 12%;
+
+
+  }
+
+  .back-link{
+    
+  }
+
+  .back-div{
+      padding-top: 20px;
+  }
+
+  /* Underline From Right */
+ .back-link {
+    font-size: 15px;
+    color: var(--dark);
+    font-weight: bold;
+    text-decoration: none;
+
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  .back-link:before {
+    content: "";
+    position: absolute;
+    z-index: -3;
+    left: 100%;
+    right: 0;
+    bottom: 0;
+    background: var(--dark);
+    height: 3px;
+    -webkit-transition-property: left;
+    transition-property: left;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .back-link:hover:before, .back-link:focus:before, .back-link:active:before {
+    left: 0;
+  }

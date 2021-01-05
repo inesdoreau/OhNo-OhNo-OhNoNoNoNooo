@@ -6,7 +6,7 @@
              Salut {{ user.pseudo }} ! 
          </div>
          <div class="text">
-             tranquille la famille ?
+             Tranquille la famille ?
          </div>
          <div class="text">
             Aux dernières nouvelles ton super score est de :
@@ -18,15 +18,15 @@
         <div class="box">
          <router-link to='/quizz' class="link">GO TO QUIZZ</router-link>
         </div>
-        <div class="box">
+        <div class="box" >
          <router-link to='/leaderboard' class="link" >Tableau des scores</router-link>
         </div>
-        <div v-if="user.isAdmin" class="box">
+        <div v-if="user.isAdmin" class="box" >
             <router-link to='/question' class="link">Ajouter une question</router-link>
         </div>
 
         <form @submit.prevent="logout() ">
-            <button type="submit">Deconnexion
+            <button class="logout-button" type="submit" >Deconnexion
             </button>
         </form>
 
