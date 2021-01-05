@@ -1,6 +1,10 @@
-
-
-.LogoQuiz{
-    height: 100px;
-    width: 100px;
-}
+.login{
+    display:inline-block;
+    transform:scale(1);
+    transition: all 100ms linear;
+  }
+  button:hover > .login{
+   font-weight: 700;
+   transform:scale(1.8);
+   transition: all 1000ms linear;
+  }
