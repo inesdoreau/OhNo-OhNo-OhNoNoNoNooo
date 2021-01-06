@@ -211,11 +211,12 @@ router.post('/login', async (req, res) => {
    */
   router.post('/question', async (req, res) => {
     const question = req.body.question
+    const id = req.body.id
   
     await client.query({
-      text: `INSERT INTO questions(question) VALUES ($1)
+      text: `INSERT INTO questions(question, id) VALUES ($1, $2)
       `,
-      values: [question]
+      values: [question, id]
     })
     res.send('ok')
   })

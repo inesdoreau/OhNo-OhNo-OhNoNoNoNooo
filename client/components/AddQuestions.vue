@@ -5,6 +5,7 @@
         <h2 class="add-title">Nouvelle Question</h2>
         <div>
           <input class="input-area" id="move" type="text" v-model="newQuestion.question" placeholder="Je sens que ca va être une question pertinente" required> 
+          <input type="hidden" v-model="newQuestion.id">
         </div>
         <div class="text">
           {{ newQuestion.id }} {{newQuestion.question}}
@@ -30,15 +31,25 @@ module.exports = {
   components: {
   },
   props: {
+    questions: { type: Array, default: [] },
      isConnected: { type: Boolean }
   },
   data () {
     return {
         newQuestion: {
             question: '',
+            id: '',
         },
         showForm: false
     }
+  },
+  computed: {
+    questionID() {
+      if (this.questions !== []) {
+        return this.questions.length + 1
+      }
+      return null
+    },
   },
   methods: {
     addQuestion () {
