@@ -60,8 +60,19 @@ var app = new Vue({
   methods: {
     async login (user) {
       const res = await axios.post('/api/login', user)
-      this.user = res.data
-      this.isConnected = true
+      try {
+        this.isConnected = true
+          const res = await axios.get('/api/me')
+          this.user = res.data
+          this.isConnected = true
+        } catch (err) {
+          // if (err.response && err.response.statusCode === 401) {
+          if (err.response?.status === 401) {
+            this.isConnected = false
+          } else {
+            console.log('error', err)
+          }
+        }
       this.$router.push('/account')
     },
 
