@@ -42,6 +42,18 @@ body {
   line-height: 25px;
   border-radius: 4px;
 }
+.header-div button {
+  float: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border: none;
+}
 .header-link{
   text-decoration: none;
 }

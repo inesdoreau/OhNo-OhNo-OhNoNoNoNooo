@@ -25,10 +25,8 @@
             <router-link to='/question' class="link">Ajouter une question</router-link>
         </div>
 
-        <form @submit.prevent="logout() ">
-            <button class="logout-button" type="submit" >Deconnexion
-            </button>
-        </form>
+        <button class="logout-button" @click.prevent="logout">Deconnexion</button>
+        
 
     </div>
     </div>   
@@ -44,7 +42,7 @@ module.exports = {
         
     },
     methods: {
-        async logout() {
+        logout: function(event) {
             this.$emit('logout')
         }
     }

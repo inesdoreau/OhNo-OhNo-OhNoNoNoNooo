@@ -23,10 +23,10 @@
             <label>Mot de Passe</label>
 					</div>
 
-          <div class="registerInfo validate-input user-box" >
+          <!--<div class="registerInfo validate-input user-box" >
 						<input v-model="password" class="inputinfo" type="password" required>
             <label>Confirmer le Mot de Passe</label>
-					</div>
+					</div>-->
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
