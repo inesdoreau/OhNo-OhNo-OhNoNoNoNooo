@@ -14,7 +14,22 @@
     <body>
       <!--<header class="site-header">-->
         <div id = "app">
-          <img class="LogoQuiz" src="images/OhNoQuizEmpty.png">
+
+          <header class="header-quizz">
+            <div class="header-div">
+              <router-link to='/' class="header-logo">
+                <img class="LogoQuiz" src="images/OhNoQuizEmpty.png">
+              </router-link>
+              <div v-if="is-connected" class="header-right" >
+                <router-link to='/login' class="header-login header-link">Connexion</router-link>
+                <router-link to='/register' class="header-register header-link">Inscription</router-link>
+              </div>
+              <div v-else class="header-right" >
+                <router-link to='/account' class="header-login header-link">Déconnexion</router-link>
+                <router-link to='/account' class="header-register header-link">Mon compte</router-link>
+              </div>
+          </div>
+          </header>
           
           <main>
             <router-view
