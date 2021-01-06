@@ -77,7 +77,18 @@ var app = new Vue({
 
     async addScore (user) {
       const res = await axios.put('/api/score', user)
-      
+      try {
+        const res = await axios.get('/api/me')
+        this.user = res.data
+        this.isConnected = true
+      } catch (err) {
+        // if (err.response && err.response.statusCode === 401) {
+        if (err.response?.status === 401) {
+          this.isConnected = false
+        } else {
+          console.log('error', err)
+        }
+      }
       this.$router.push('/final')
     },
 
