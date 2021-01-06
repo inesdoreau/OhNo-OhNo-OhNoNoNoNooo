@@ -107,13 +107,11 @@ router.post('/login', async (req, res) => {
     res.json(result.rows[0])
   })
 
-  router.post('/logout', async (req, res) => {
-    if (typeof req.session.userId === 'undefined') {
-      res.status(401).json({ message: 'not connected' })
-      return
-    }
-  
-    req.session.userId = null
+  /**
+   * RECUPERER L'USER
+   */
+  router.get('/logout', async (req, res) => {
+    req.session = null
     res.send('ok')
   })
 
