@@ -7,26 +7,12 @@ const { Client, Connection } = require('pg')
 const client = new Client({
   
   
-  user: 'postgres',
+  /*user: 'postgres',
   host: 'localhost',
   password: 'secret',
-  database: 'project'
+  database: 'project'*/
 
-  /*
-  user: 'slwtkbrbtbvabe',
-  host: 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
-  password: '86f50c1a4be2e9d887b1e083d40432d89335705f5d2a1d9021152a9e59c9c22c',
-  database: 'd8mn9uj7ubh1e0',
-  ssl: {
-    rejectUnauthorized : false,
-    ca   : fs.readFileSync("server-ca.pem").toString(),
-    key  : fs.readFileSync("client-key.pem").toString(),
-    cert : fs.readFileSync("client-cert.pem").toString(),
-  }
-  */
-
-  
-  //connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL
 })
 
 client.connect()
@@ -35,14 +21,6 @@ const users = []
 
 const questions = []
 
-/*class Quizz {
-  constructor () {
-    this.createdAt = new Date()
-    this.updatedAt = new Date()
-    this.questions = []
-  }
-}
-*/
 /**
  * LOGIN
  */
@@ -231,7 +209,7 @@ router.post('/login', async (req, res) => {
     })
 
   /**
-   * Creer une question
+   * CREER UNE QUESTION
    */
   router.post('/question', async (req, res) => {
     const question = req.body.question
@@ -245,7 +223,7 @@ router.post('/login', async (req, res) => {
   })
 
   /**
-   * Creer une question
+   * CREER UNE REPONSE
    */
   router.post('/answers', async (req, res) => {
     const questionID = req.body.questionID

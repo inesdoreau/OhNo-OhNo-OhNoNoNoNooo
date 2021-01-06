@@ -4,14 +4,15 @@
 
     <form ref="answer" @submit.prevent="addAnswer()">
         <h2 class='add-title'>Réponses possibles</h2>
-        <div class="text">Ca peut paraitre évident mais c'est mieux si au moins une réponse est vraie </div>
+        <div class="text" v-if="showForm == false">Il vous faut au moins une réponse vraie </div>
+        <div class="text" v-if="showForm == true">Il ne peux y avoir qu'une seule réponse vraie </div>
 
         <input class="input-area answer" type="text" v-model="newAnswer.answer" placeholder="Une des réponses possibles" required><br>
 
         <div class="container">
           <ul>
-            <li>
-                <input type="radio" id="True" name="True" v-model="newAnswer.isGood" value="true"> 
+            <li v-if="showForm == false">
+                <input type="radio" id="True" name="True" v-model="newAnswer.isGood" value="true" > 
                 <label for="True" class="label"> Vrai </label><br>
 
               <div class="check"></div>
@@ -29,10 +30,10 @@
         
     </form>
 
-    <div class="box-answer">
+    <div class="box-answer" v-if="showForm == true">
      <router-link to='/question' class="link-answer">Ajouter une autre question ?</router-link>
     </div>
-     <div class="box-answer">
+     <div class="box-answer" v-if="showForm == true">
      <router-link to='/account' class="link-answer">Terminer et retourner à l'accueil</router-link>
     </div>
 </div>
@@ -44,6 +45,7 @@ module.exports = {
   components: {
   },
   props: {
+     user: {type: Object},
     questions: { type: Array, default: [] },
   },
   data () {
@@ -69,6 +71,9 @@ module.exports = {
     addAnswer () {
         this.$emit('add-answer', this.newAnswer)
         this.$refs.answer.reset();
+        if(this.newAnswer.isGood == 'true'){
+          this.showForm = true;
+        }
     },
   },
   mounted() {
