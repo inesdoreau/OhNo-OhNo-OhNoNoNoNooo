@@ -1,5 +1,6 @@
 <template>
-    <transition name="final"
+<div>
+    <transition name="final" v-if="isConnected"
     ><div class="final-mask">
       <div class="final-wrapper">
         <div class="final-container">
@@ -31,16 +32,25 @@
       </div>
     </div>
     </transition>
+  <div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
+    </div>
+</div>
 </template>
 
 <script>
 module.exports = {
   props: {
     user: {type: Object},
+     isConnected: { type: Boolean }
   },
 }
 </script>
 
 <style >
     @import '../CSS/Final.css';
+    @import '../CSS/Account.css';
 </style>

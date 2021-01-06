@@ -1,7 +1,6 @@
 <template>
-<div class="add-box">
-
-
+<div >
+  <div class="add-box" v-if="isConnected">
     <form ref="answer" @submit.prevent="addAnswer()">
         <h2 class='add-title'>Réponses possibles</h2>
         <div class="text" v-if="showForm == false">Il vous faut au moins une réponse vraie </div>
@@ -36,6 +35,13 @@
      <div class="box-answer" v-if="showForm == true">
      <router-link to='/account' class="link-answer">Terminer et retourner à l'accueil</router-link>
     </div>
+  </div>
+  <div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
+    </div>
 </div>
 </template>
  
@@ -46,7 +52,8 @@ module.exports = {
   },
   props: {
      user: {type: Object},
-    questions: { type: Array, default: [] },
+     questions: { type: Array, default: [] },
+     isConnected: { type: Boolean }
   },
   data () {
     return {
@@ -86,4 +93,5 @@ module.exports = {
  
 <style>
   @import '../CSS/AddQuestionsAnswers.css';
+  @import '../CSS/Account.css';
 </style>

@@ -1,5 +1,6 @@
 <template>
-<div class="add-box">
+<div>
+<div class="add-box" v-if="isConnected">
     <form @submit.prevent="addQuestion()">
         <h2 class="add-title">Nouvelle Question</h2>
         <div>
@@ -12,9 +13,14 @@
           <button class="button-validate"  type="submit">Ajouter</button>
         </div>
     </form>
-    
+</div> 
+<div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
+    </div>
 
-     
 </div>
 </template>
  
@@ -24,6 +30,7 @@ module.exports = {
   components: {
   },
   props: {
+     isConnected: { type: Boolean }
   },
   data () {
     return {
@@ -44,4 +51,5 @@ module.exports = {
  
 <style>
   @import '../CSS/AddQuestionsAnswers.css';
+  @import '../CSS/Account.css';
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <div class="wrap">
-    <div class= "account-box">
+    <div class="wrap" >
+    <div class= "account-box" v-if="isConnected">
         <h2 class="title">Mon compte</h2>
          <div class="text greeting">
              Salut {{ user.pseudo }} ! 
@@ -26,16 +26,22 @@
         </div>
 
         <button class="logout-button" @click.prevent="logout">Deconnexion</button>
-        
-
     </div>
-    </div>   
+    <div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
+    </div>
+    </div> 
+  
 </template>
 
 <script>
 module.exports = {
     props: {
         user: {type: Object},
+        isConnected: { type: Boolean }
     },
     
     async mounted () {

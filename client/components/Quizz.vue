@@ -1,5 +1,6 @@
 <template>
-  <div id="quiz-container">
+<div>
+  <div id="quiz-container" v-if="isConnected">
     <h1 id="logo-headline">Quiz</h1>
     <div class="score-quizz">{{ user.score }}</div>
     <hr class="divider" />
@@ -21,6 +22,14 @@
 
     <hr class="divider" />
   </div>
+  </div>
+   <div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -30,6 +39,7 @@ module.exports = {
     questions: { type: Array, default: [] },
     answers: { type: Array, default: [] },
     score: {},
+    isConnected: { type: Boolean }
   },
   data() {
     return {
@@ -149,4 +159,5 @@ module.exports = {
 
 <style>
 @import "../CSS/Quizz.css";
+@import '../CSS/Account.css';
 </style>
