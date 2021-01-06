@@ -214,9 +214,9 @@ router.post('/login', async (req, res) => {
     const id = req.body.id
   
     await client.query({
-      text: `INSERT INTO questions(question, id) VALUES ($1, $2)
+      text: `INSERT INTO questions(id, question) VALUES ($1, $2)
       `,
-      values: [question, id]
+      values: [id, question]
     })
     res.send('ok')
   })

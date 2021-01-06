@@ -8,7 +8,7 @@
           <input type="hidden" v-model="newQuestion.id">
         </div>
         <div class="text">
-          {{ newQuestion.id }} {{newQuestion.question}}
+          {{ newQuestion.id }} : {{newQuestion.question}}
         </div>
         <div>
           <button class="button-validate"  type="submit">Ajouter</button>
@@ -56,7 +56,12 @@ module.exports = {
         this.$emit('add-question', this.newQuestion)
         this.$router.push('/answer')
     },
-  }
+  },
+  mounted() {
+    //str = JSON.stringify(this.questions.length)
+    //console.log(str)
+    this.newQuestion.id = this.questions.length + 1
+  },
 }
 </script>
  
