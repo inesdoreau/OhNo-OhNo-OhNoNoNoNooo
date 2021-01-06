@@ -1,11 +1,18 @@
 <template>
-<div>
+<div class="add-box">
     <form @submit.prevent="addQuestion()">
-        <h2>New Question:</h2>
-        <input type="text" v-model="newQuestion.question" placeholder="Question" required>
-        <button type="submit">Ajouter</button>
+        <h2 class="add-title">Nouvelle Question</h2>
+        <div>
+          <input class="input-area" id="move" type="text" v-model="newQuestion.question" placeholder="Je sens que ca va être une question pertinente" required> 
+        </div>
+        <div class="text">
+          {{ newQuestion.id }} {{newQuestion.question}}
+        </div>
+        <div>
+          <button class="button-validate"  type="submit">Ajouter</button>
+        </div>
     </form>
-    {{ newQuestion.id }} - {{newQuestion.question}}
+    
 
      
 </div>
@@ -36,4 +43,5 @@ module.exports = {
 </script>
  
 <style>
+  @import '../CSS/AddQuestionsAnswers.css';
 </style>

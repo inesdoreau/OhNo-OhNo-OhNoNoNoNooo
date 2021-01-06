@@ -1,13 +1,15 @@
 <template>
   <div id="quiz-container">
     <h1 id="logo-headline">Quiz</h1>
+    <div class="score-quizz">{{ user.score }}</div>
     <hr class="divider" />
-    {{ user.score }}
-    <div>
-      <h1 v-html="currentQuestion.question"></h1>
-      <form v-if="currentQuestion">
+    
+    <div class="container-quizz">
+      <h1 class="current-question" v-html="currentQuestion.question"></h1>
+      <form class="form-quizz" v-if="currentQuestion">
       <!--<div v-for="answer in answers" :key="answer" >-->
-        <button
+        <button 
+          class="button-quizz"
           v-for="answer in currentAnswers"
           :index="currentQuestion.id"
           :key="answer"

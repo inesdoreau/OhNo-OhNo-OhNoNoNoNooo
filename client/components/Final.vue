@@ -8,9 +8,9 @@
           </div>
 
           <div class="final-body">
-            <div id="score">
-              Congrats ! You finish the quiz 
-              This is your score : {{ user.score }}
+            <div class="final-text">
+              You finish the quiz 
+              This is your score : <span class="final-score">{{ user.score }}<span>
             </div>
           </div>
 
@@ -24,7 +24,7 @@
             <router-link to='/account' 
               id="close-button"
               class="button-footer">
-            Close
+              Close
             </router-link>
           </div>
         </div>
