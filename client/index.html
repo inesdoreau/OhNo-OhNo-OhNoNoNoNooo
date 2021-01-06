@@ -14,7 +14,21 @@
     <body>
       <!--<header class="site-header">-->
         <div id = "app">
-          <img class="LogoQuiz" src="images/OhNoQuiz.png">
+          <header class="header-quizz">
+            <div class="header-div">
+              <router-link to='/' class="header-logo">
+                <img class="LogoQuiz" src="images/OhNoQuizEmpty.png">
+              </router-link>
+              <div  class="header-right" v-if="isConnected">
+                <router-link to='/account' class="header-login header-link">Mon Compte</router-link>
+                <button class="header-register header-link" @click.prevent="logout">Deconnexion </button>
+              </div>
+              <div  class="header-right" v-else>
+                <router-link to='/login' class="header-login header-link">Connexion</router-link>
+                <router-link to='/register' class="header-register header-link">Inscription</router-link>
+              </div>
+          </div>
+          </header>
           
           <main>
             <router-view
@@ -35,6 +49,18 @@
       <script src="/vue-application.js"></script>
     </body>
 </html>
+
+
+
+<script>
+  module.exports = {
+    methods: {
+          logout: function (event) {
+              this.$emit('logout')
+          }
+      }
+  }
+  </script>
 
 <style>
   @import 'CSS/index.css';

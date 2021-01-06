@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+
+:root {
+
+  --background: #EAE2B7;
+  --light: #FCBF49;
+  --medium: #F77F00;
+  --dark: #D62828;
+  --darker: #003049;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', "Times New Roman", Times, serif;
+  background: var(--background);
+}
+
 .final-mask {
     position: fixed;
     z-index: 9998;
@@ -18,19 +41,21 @@
     max-width: 650px;
     margin: 0px auto;
     padding: 20px 30px;
-    background-color: #fff;
+    background-color: var(--light);
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
   }
   .final-header {
     text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 50px;
   }
   .final-header h2 {
-    color: rgb(0, 178, 72);
+    color: var(--darker);
   }
   .final-header h3 {
-    color: rgb(0, 178, 72);
+    color: var(--darker);
   }
   .final-body {
     margin: 20px 0;
@@ -42,23 +67,24 @@
   .final-footer {
     display: flex;
     justify-content: space-between;
+
   }
   .button-footer {
     padding: 1rem 2rem;
-    background: linear-gradient(
-      210deg,
-      rgba(187, 0, 47, 0.8),
-      rgba(245, 0, 87, 0.6)
-    );
+    background: var(--medium);
     border-radius: 7px;
     border: none;
+    text-decoration: none;
+    color: var(--background);
+    transition: 0.3s;
   }
   .button-footer:active,
   .button-footer:focus {
     outline: none;
   }
   .button-footer:hover {
-    transform: scale(1.02);
+    transform: scale(1.2);
+    font-weight: bold;
   }
   /*
    * The following styles are auto-applied to elements with
@@ -78,4 +104,15 @@
   .final-leave-active .final-container {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+  }
+
+  .final-text{
+    text-align: center;
+    color: var(--darker);
+    font-size: 1.2em;
+    padding-bottom: 30px;
+  }
+
+  .final-score{
+    font-weight: bold;
   }

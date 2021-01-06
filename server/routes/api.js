@@ -6,11 +6,12 @@ const { Client, Connection } = require('pg')
 
 const client = new Client({
   
+  
   /*user: 'postgres',
   host: 'localhost',
   password: 'secret',
   database: 'project'*/
-  
+
   connectionString: process.env.DATABASE_URL
 })
 
@@ -20,14 +21,6 @@ const users = []
 
 const questions = []
 
-/*class Quizz {
-  constructor () {
-    this.createdAt = new Date()
-    this.updatedAt = new Date()
-    this.questions = []
-  }
-}
-*/
 /**
  * LOGIN
  */
@@ -114,13 +107,11 @@ router.post('/login', async (req, res) => {
     res.json(result.rows[0])
   })
 
-  router.post('/logout', async (req, res) => {
-    if (typeof req.session.userId === 'undefined') {
-      res.status(401).json({ message: 'not connected' })
-      return
-    }
-  
-    req.session.userId = null
+  /**
+   * RECUPERER L'USER
+   */
+  router.get('/logout', async (req, res) => {
+    req.session = null
     res.send('ok')
   })
 
@@ -216,7 +207,7 @@ router.post('/login', async (req, res) => {
     })
 
   /**
-   * Creer une question
+   * CREER UNE QUESTION
    */
   router.post('/question', async (req, res) => {
     const question = req.body.question
@@ -230,7 +221,7 @@ router.post('/login', async (req, res) => {
   })
 
   /**
-   * Creer une question
+   * CREER UNE REPONSE
    */
   router.post('/answers', async (req, res) => {
     const questionID = req.body.questionID

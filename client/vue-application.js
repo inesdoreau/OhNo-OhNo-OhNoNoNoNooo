@@ -43,25 +43,36 @@ var app = new Vue({
     this.answers = res3.data
     const res4 = await axios.get('/api/users')
     this.users = res4.data
-
+    try {
+      const res = await axios.get('/api/me')
+      this.user = res.data
+      this.isConnected = true
+    } catch (err) {
+      // if (err.response && err.response.statusCode === 401) {
+      if (err.response?.status === 401) {
+        this.isConnected = false
+      } else {
+        console.log('error', err)
+      }
+    }
     
   },
   methods: {
     async login (user) {
       const res = await axios.post('/api/login', user)
-
       try {
-        const res = await axios.get('/api/me')
-        this.user = res.data
         this.isConnected = true
-      } catch (err) {
-        // if (err.response && err.response.statusCode === 401) {
-        if (err.response?.status === 401) {
-          this.isConnected = false
-        } else {
-          console.log('error', err)
+          const res = await axios.get('/api/me')
+          this.user = res.data
+          this.isConnected = true
+        } catch (err) {
+          // if (err.response && err.response.statusCode === 401) {
+          if (err.response?.status === 401) {
+            this.isConnected = false
+          } else {
+            console.log('error', err)
+          }
         }
-      }
       this.$router.push('/account')
     },
 
@@ -93,7 +104,8 @@ var app = new Vue({
     },
 
     async logout(){
-      await axios.post('/api/logout')
+      await axios.get('/api/logout')
+      this.isConnected = false
       this.$router.push('/')
     }
   }

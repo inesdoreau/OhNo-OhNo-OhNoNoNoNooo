@@ -1,13 +1,26 @@
 <template>
 <div>
+<div class="add-box" v-if="isConnected">
     <form @submit.prevent="addQuestion()">
-        <h2>New Question:</h2>
-        <input type="text" v-model="newQuestion.question" placeholder="Question" required>
-        <button type="submit">Ajouter</button>
+        <h2 class="add-title">Nouvelle Question</h2>
+        <div>
+          <input class="input-area" id="move" type="text" v-model="newQuestion.question" placeholder="Je sens que ca va être une question pertinente" required> 
+        </div>
+        <div class="text">
+          {{ newQuestion.id }} {{newQuestion.question}}
+        </div>
+        <div>
+          <button class="button-validate"  type="submit">Ajouter</button>
+        </div>
     </form>
-    {{ newQuestion.id }} - {{newQuestion.question}}
+</div> 
+<div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
+    </div>
 
-     
 </div>
 </template>
  
@@ -17,6 +30,7 @@ module.exports = {
   components: {
   },
   props: {
+     isConnected: { type: Boolean }
   },
   data () {
     return {
@@ -36,4 +50,6 @@ module.exports = {
 </script>
  
 <style>
+  @import '../CSS/AddQuestionsAnswers.css';
+  @import '../CSS/Account.css';
 </style>

@@ -1,23 +1,46 @@
 <template>
-<div>
-
-
+<div >
+  <div class="add-box" v-if="isConnected">
     <form ref="answer" @submit.prevent="addAnswer()">
-        <h2>newAnswer:</h2>
-        <input type="text" v-model="newAnswer.answer" placeholder="Answer" required><br>
-        <input type="radio" name="True" v-model="newAnswer.isGood" value="true"> 
-        <label for="True"> True </label><br>
-        <input type="radio" name="False" v-model="newAnswer.isGood" value="false" checked> 
-        <label for="False"> False </label><br>
+        <h2 class='add-title'>Réponses possibles</h2>
+        <div class="text" v-if="showForm == false">Il vous faut au moins une réponse vraie </div>
+        <div class="text" v-if="showForm == true">Il ne peux y avoir qu'une seule réponse vraie </div>
+
+        <input class="input-area answer" type="text" v-model="newAnswer.answer" placeholder="Une des réponses possibles" required><br>
+
+        <div class="container">
+          <ul>
+            <li v-if="showForm == false">
+                <input type="radio" id="True" name="True" v-model="newAnswer.isGood" value="true" > 
+                <label for="True" class="label"> Vrai </label><br>
+
+              <div class="check"></div>
+            </li>
+            <li>
+              <input type="radio" id="False" name="False" v-model="newAnswer.isGood" value="false" checked> 
+              <label for="False" class="label"> Faux </label><br>
+
+              <div class="check"><div class="inside"></div></div>
+            </li>
+
         <input type="hidden" v-model="newAnswer.questionID">
-        <button type="submit">Ajouter</button>
+        
+        <button class="add-answer" type="submit">Ajouter</button>
+        
     </form>
 
-    <div>
-     <router-link to='/question'>Ajouter une autre question ?</router-link>
+    <div class="box-answer" v-if="showForm == true">
+     <router-link to='/question' class="link-answer">Ajouter une autre question ?</router-link>
     </div>
-     <div>
-     <router-link to='/account'>Retourner à l'accueil</router-link>
+     <div class="box-answer" v-if="showForm == true">
+     <router-link to='/account' class="link-answer">Terminer et retourner à l'accueil</router-link>
+    </div>
+  </div>
+  <div class= "account-box" v-else>
+        <h2 class="title">Vous n'êtes pas connecté</h2>
+        <div class="box">
+         <router-link to='/login' class="link">Connexion</router-link>
+        </div>
     </div>
 </div>
 </template>
@@ -28,7 +51,9 @@ module.exports = {
   components: {
   },
   props: {
-    questions: { type: Array, default: [] },
+     user: {type: Object},
+     questions: { type: Array, default: [] },
+     isConnected: { type: Boolean }
   },
   data () {
     return {
@@ -53,6 +78,9 @@ module.exports = {
     addAnswer () {
         this.$emit('add-answer', this.newAnswer)
         this.$refs.answer.reset();
+        if(this.newAnswer.isGood == 'true'){
+          this.showForm = true;
+        }
     },
   },
   mounted() {
@@ -64,4 +92,6 @@ module.exports = {
 </script>
  
 <style>
+  @import '../CSS/AddQuestionsAnswers.css';
+  @import '../CSS/Account.css';
 </style>
