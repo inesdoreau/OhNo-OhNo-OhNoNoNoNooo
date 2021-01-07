@@ -86,9 +86,9 @@ module.exports = {
     },
   },
   mounted() {
-    //str = JSON.stringify(this.questions.length)
-    //console.log(str)
-    this.newAnswer.questionID = this.questions.length
+    str = JSON.stringify(this.questions.length)
+    console.log(str)
+    this.newAnswer.questionID = this.questions.length +1
   },
 }
 </script>

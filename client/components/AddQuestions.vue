@@ -44,7 +44,7 @@ module.exports = {
     }
   },
   computed: {
-    questionID() {
+    ID() {
       if (this.questions !== []) {
         return this.questions.length + 1
       }
@@ -58,9 +58,9 @@ module.exports = {
     },
   },
   mounted() {
-    //str = JSON.stringify(this.questions.length)
-    //console.log(str)
-    this.newQuestion.id = this.questions.length + 1
+    str = JSON.stringify(this.questions.length)
+    console.log(str)
+    this.newQuestion.ID = this.questions.length + 1
   },
 }
 </script>
