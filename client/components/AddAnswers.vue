@@ -9,7 +9,7 @@
         <input class="input-area answer" type="text" v-model="newAnswer.answer" placeholder="Une des réponses possibles" required><br>
 
         <div class="container">
-          <ul>
+          <ul >
             <li v-if="showForm == false">
                 <input type="radio" id="True" name="True" v-model="newAnswer.isGood" value="true" > 
                 <label for="True" class="label"> Vrai </label><br>
@@ -22,6 +22,8 @@
 
               <div class="check"><div class="inside"></div></div>
             </li>
+              
+        
 
         <input type="hidden" v-model="newAnswer.questionID">
         
@@ -86,7 +88,7 @@ module.exports = {
   mounted() {
     //str = JSON.stringify(this.questions.length)
     //console.log(str)
-    this.newAnswer.questionID = this.questions.length + 1
+    this.newAnswer.questionID = this.questions.length
   },
 }
 </script>
